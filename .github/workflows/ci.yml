@@ -1,10 +1,5 @@
-name: ci
-# Trigger the workflow on push and deployment_status events
-on:
-  push:
-  deployment_status:
-    types: [success] # Ensure it only triggers on successful deployment statuses
-
+name: End-to-end tests
+on: [push, deployment, deployment_status]
 jobs:
   e2e:
     # Only runs this job on successful deploy
