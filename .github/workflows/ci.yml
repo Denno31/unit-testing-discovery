@@ -2,8 +2,6 @@ name: ci
 # Trigger the workflow on push and deployment_status events
 on:
   push:
-    branches:
-      - main # Specify the branches you want to monitor for pushes
   deployment_status:
     types: [success] # Ensure it only triggers on successful deployment statuses
 
