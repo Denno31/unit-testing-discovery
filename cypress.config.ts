@@ -1,3 +1,4 @@
+import path from "path";
 import { defineConfig } from "cypress";
 
 export default defineConfig({
@@ -6,5 +7,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
   },
 });
