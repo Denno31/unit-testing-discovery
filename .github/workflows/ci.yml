@@ -1,0 +1,21 @@
+name: ci
+# Trigger the workflow on push and deployment_status events
+on:
+  push:
+    branches:
+      - main # Specify the branches you want to monitor for pushes
+  deployment_status:
+    types: [success] # Ensure it only triggers on successful deployment statuses
+
+jobs:
+  e2e:
+    # Only runs this job on successful deploy
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+      - name: Run Cypress 🌲
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
